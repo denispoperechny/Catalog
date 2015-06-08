@@ -1,0 +1,4 @@
+Search order:
+- group (tag)
+- item name
+- seller name

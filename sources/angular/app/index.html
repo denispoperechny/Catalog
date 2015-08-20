@@ -4,20 +4,22 @@
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
-  <link rel="stylesheet" href="app.css">
-  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="style/shop-theme.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+    <link rel="stylesheet" href="app.css">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style/shop-theme.css" rel="stylesheet">
+    <link href="bower_components/bootstrap-treeview/dist/bootstrap-treeview.min.css">
 
-  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
 
 </head>
 <body>
@@ -74,11 +76,14 @@
           <div class="col-md-3">
               <p class="lead">Shop Name</p>
 
-              <div class="list-group">
-                  <a href="#" class="list-group-item">Category 1</a>
-                  <a href="#" class="list-group-item">Category 2</a>
-                  <a href="#" class="list-group-item">Category 3</a>
-              </div>
+              <!--<div class="list-group">-->
+                  <!--<a href="#" class="list-group-item">Category 1</a>-->
+                  <!--<a href="#" class="list-group-item">Category 2</a>-->
+                  <!--<a href="#" class="list-group-item">Category 3</a>-->
+              <!--</div>-->
+
+              <div id="categories_tree"></div>
+
           </div>
 
           <div class="col-md-9">
@@ -273,10 +278,47 @@
   <!-- /.container -->
 
 
-
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+
+    <script>
+        //https://github.com/jonmiles/bootstrap-treeview
+        function getMockTree() {
+        // Some logic to retrieve, or generate tree structure
+            var tree = [
+                {
+                    text: "Parent 1",
+                    nodes: [
+                        {
+                            text: "Child 1",
+                            nodes: [
+                                {
+                                    text: "Grandchild 1"
+                                },
+                                {
+                                    text: "Grandchild 2"
+                                }
+                            ]
+                        },
+                        {
+                            text: "Child 2"
+                        }
+                    ]
+                },
+                {
+                    text: "Parent 2"
+                },
+                {
+                    text: "Parent 3"
+                }
+            ];
+            return tree;
+        }
+
+        $('#categories_tree').treeview({data: getMockTree()});
+    </script>
+
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
